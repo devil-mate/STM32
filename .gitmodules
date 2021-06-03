@@ -1,0 +1,3 @@
+[submodule "pasuo_proj/pasuo_serialPort"]
+	path = pasuo_proj/pasuo_serialPort
+	url = /home/git/gitRepository/GM_workProjFolder/pasuo_proj/pasuo_serialPort.git
