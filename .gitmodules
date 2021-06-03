@@ -1,0 +1,3 @@
+[submodule "pasuo_proj/pasuo_serialPort"]
+	path = pasuo_proj/pasuo_serialPort
+	url = git@github.com:devil-mate/GM_workProj_rosNone.git
