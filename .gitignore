@@ -10,3 +10,9 @@
 /*/*/*.pyc
 */*/*.client*
 */*.ods
+
+*/.git
+*/.gitignore
+/.vscode
+/.idea
+# */.gitmodules
