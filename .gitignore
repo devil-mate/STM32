@@ -1,0 +1,12 @@
+/cmake-build-debug
+/.idea
+/.vscode
+/Data
+/*  /cmake-build-debug
+/*  /.idea
+/* /.vscode
+/* /Data
+/* /*/*/*/.svn
+/*/*/*.pyc
+*/*/*.client*
+*/*.ods
