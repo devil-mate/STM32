@@ -11,8 +11,10 @@
 */*/*.client*
 */*.ods
 
-/*/*/.git
-/*/*/.gitignore
+*/*/.git
+*/*/.gitignore
+*/*/*/.git
+*/*/*/.gitignore
 /.vscode
 /.idea
 
