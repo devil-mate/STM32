@@ -15,3 +15,6 @@
 /*/*/.gitignore
 /.vscode
 /.idea
+
+*/.git
+*/.gitignore
