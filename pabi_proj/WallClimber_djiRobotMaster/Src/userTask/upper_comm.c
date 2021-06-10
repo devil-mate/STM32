@@ -461,17 +461,23 @@ static uint16_t readData(uint8_t *Buf,uint16_t IdleLen)
 static void getStateFeed_promptlys()
 {
 	static float odomV,odomW;
-	getRobotV(&odomV,&odomW);
+	//getRobotV(&odomV,&odomW);
 	LocalStateFeed_promptlys.digit = StateFeed_promptlys.digit;
-	LocalStateFeed_promptlys.odom.linearV= odomV;
-	LocalStateFeed_promptlys.odom.omega= odomW;
-	LocalStateFeed_promptlys.imu.theta = getTheta();
+	LocalStateFeed_promptlys.odom.wheelVelocity[0]= getWheelVelocity(0);
+	LocalStateFeed_promptlys.odom.wheelVelocity[1]= getWheelVelocity(1);
+	LocalStateFeed_promptlys.odom.theta= getTheta();
+	
+//	LocalStateFeed_promptlys.odom.wheelVelocity[0]= 0.2;
+//	LocalStateFeed_promptlys.odom.wheelVelocity[1]= 0.2;
+//	LocalStateFeed_promptlys.odom.theta= 0.1;
 	
 //	LocalStateFeed_promptlys.digit = 5;
 //	LocalStateFeed_promptlys.odom.vx= 6.4;
 //	LocalStateFeed_promptlys.odom.vy= 4.0;
 //	LocalStateFeed_promptlys.odom.theta = 32.0;
-	printf("odom: v=%3.2f, w=%3.2f\r\n",odomV,odomW);
+	printf("odom: vL[%3.2f],vR[%3.2f], theta=[%3.2f]\r\n",
+		LocalStateFeed_promptlys.odom.wheelVelocity[1],LocalStateFeed_promptlys.odom.wheelVelocity[1],
+		LocalStateFeed_promptlys.odom.theta);
 	
 }
 

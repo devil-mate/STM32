@@ -87,7 +87,7 @@ uint8_t initControl();
 uint8_t sendControlFrame(); 
 float getRobotV(float* speedV,float* speedW);
 
-
+float getWheelVelocity (uint8_t motorID);
 
 
 

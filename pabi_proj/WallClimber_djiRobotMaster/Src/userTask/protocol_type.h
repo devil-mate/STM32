@@ -152,15 +152,15 @@ typedef struct
 }picOdom_s;
 typedef struct
 {
-	float linearV;
-	float omega;
+	float wheelVelocity[2]; //左右轮线速度
+	float theta; //航向角  (这两个变量用于上位机计算里程计)
 }robotOdom_s;
-typedef struct
-{
-	float x;
-	float y;
-	float theta;
-}Imu_s;
+//typedef struct
+//{
+//	float x;
+//	float y;
+//	float theta;
+//}Imu_s;
 
 typedef struct
 {
@@ -169,7 +169,6 @@ typedef struct
 	
     uint16_t           	digit;      //数字标志位
 	robotOdom_s 	    odom;
-	Imu_s				imu;
     uint8_t             checkSum;
     uint16_t            tail;
 } StateFeed_promptly_s; //机器人状态信息立即反馈

@@ -152,6 +152,9 @@ uint8_t sendControlFrame()
 	sendCurrentCmd(tempOut);	
 	
 }
+float getWheelVelocity (uint8_t motorID){
+	 return (sTempMotorFeedData_[motorID].velocity/10.0f * PI* PLATFORM_WHEEL_DIA/60.0/1000); //轮子线速度m/s
+}
 
 /* 私有函数部分*/
 static uint16_t genCanId(uint8_t motorId)

@@ -52,7 +52,7 @@ static void InputDataTask(void * argument)
 //		}
 		//||gCanErrorFlag==true 
 //		HAL_GPIO_TogglePin(SHUTDOWN_OUT_PORT,SHUTDOWN_OUT_PIN);
-		if(readPin(SHUTDOWN_IN_PORT,SHUTDOWN_IN_PIN,500) ){
+		if(readPin(SHUTDOWN_IN_PORT,SHUTDOWN_IN_PIN,10) ){
 			//printf("get port in ---SHUTDOWN_IN_PIN \r\n");
 			
 			setbit(StateFeed_promptlys.digit,11); //¹Ø»úÐÅºÅ
