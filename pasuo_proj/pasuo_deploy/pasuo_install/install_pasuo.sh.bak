@@ -1,0 +1,80 @@
+#!/bin/bash
+
+src_dir="/usr/roadrobot"
+if [ ! -d "$src_dir" ]; then
+        echo "创建文件夹$src_dir"
+        sudo mkdir $src_dir
+else
+        echo "文件夹$src_dir已存在"
+fi
+
+sh_dir="/usr/roadrobot/scripts"
+if [ ! -d "$sh_dir" ]; then
+        echo "创建文件夹$sh_dir"
+        sudo mkdir $sh_dir
+else
+        echo "文件夹$sh_dir已存在"
+fi
+
+config_dir="/etc/roadrobot"
+if [ ! -d "$config_dir" ]; then
+        echo "创建文件夹$config_dir"
+        sudo mkdir $config_dir
+else
+        echo "文件夹$config_dir已存在"
+fi
+
+sudo chmod -R 777 /usr/roadrobot
+
+ftp -n<<!
+open home.gm-robot.com
+user gmup updaterobot
+binary
+hash
+cd /roadrobot_ros/source_code
+lcd /usr/roadrobot/
+get roadrobot_ros.tar.gz roadrobot_ros.tar.gz
+
+cd /roadrobot_ros/config
+lcd /etc/roadrobot/
+get device_config.yaml device_config.yaml
+get paramConfig.yaml paramConfig.yaml
+get recorder.yaml recorder.yaml
+
+cd /roadrobot_ros/scripts
+lcd /usr/roadrobot/scripts
+get download_program.sh download_program.sh
+get installMQ.sh installMQ.sh
+get update_program.sh update_program.sh
+get virtual_com.sh virtual_com.sh
+
+cd /RoadRobot/Robot/
+lcd /bin/
+get ActiveMQLib/libapr-1.tar.gz libapr-1.tar.gz
+get ActiveMQLib/libactivemq-cpp.tar.gz libactivemq-cpp.tar.gz
+close
+bye
+!
+
+log_dir="/home/log"
+if [ ! -d "$log_dir" ]; then
+        echo "创建文件夹$log_dir"
+        sudo mkdir $log_dir
+else
+        echo "文件夹$log_dir已存在"
+fi
+
+sudo chmod -R 777 /home/log
+tar -zxvf /usr/roadrobot/roadrobot_ros.tar.gz -C /usr/roadrobot
+tar -zxvf /bin/libapr-1.tar.gz -C /usr/lib/
+tar -zxvf /bin/libactivemq-cpp.tar.gz -C /usr/lib/
+sudo chmod -R 777 /etc/roadrobot/
+touch /home/log/display_level
+echo 'WARN' >> /home/log/display_level
+sudo apt-get install libgoogle-glog-dev
+
+exit 0
+
+
+
+
